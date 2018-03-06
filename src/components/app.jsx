@@ -2,20 +2,21 @@ import React, { Component } from 'react';
 
 // material-ui
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
+import AppBar from 'material-ui/AppBar';
 
 // react-router
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch,
 } from 'react-router-dom';
 
 // components
 import Props from './props';// 独自Componentの呼び出し方法
+import PageSample from './pagesample';// 独自Componentの呼び出し方法
+import LinkList from './linklist';// 独自Componentの呼び出し方法
 
 
 class App extends Component {
@@ -26,19 +27,20 @@ class App extends Component {
       email: 'hoge@example.com',
       password: 'hogehoge',
     };
-  };
+  }
 
   // onClick処理の記述方法
-  handleClick(mailAddress, password) {
-    console.log('click handling', mailAddress, password);
-  };
+  handleClick(mailAddress) {
+    const passwordState = this.state.password;
+    console.log('click handling', mailAddress, passwordState);
+  }
 
   // textfieldからデータを受け取ってStateに渡す
   handleNameChange(e) {
     this.setState({
       name: e.target.value,
     });
-  };
+  }
 
 
   render() {
@@ -54,22 +56,31 @@ class App extends Component {
       <Router>
         <MuiThemeProvider>
           <div>
+            <AppBar
+              title={<span>React.js Sample Page</span>}
+              iconElementLeft={<div />}
+              iconElementRight={<LinkList />}
+            />
             <h1 className="h1Class">
               Hello World, {this.state.name}
             </h1> {/* stateのデータを表示 */}
             <TextField
               hintText="Input your name!!"
               floatingLabelText="Name"
-              floatingLabelFixed={true}
+              floatingLabelFixed
               value={this.state.name}
-              onChange={(e) => this.handleNameChange(e)}
+              onChange={e => this.handleNameChange(e)}
             />
             <FlatButton
               style={styles.button}
               label="onClick Sample button(Look console)"
-              onClick={() => this.handleClick(this.state.email, this.state.password)}
+              onClick={() => this.handleClick(this.state.email)}
             />
-            <Props password={this.state.password} />
+            <Switch>
+              <Route exact path="/" render={props => <Props password={this.state.password} {...props} />} />
+              <Route path="/title1" render={props => <PageSample title="title1" {...props} />} />
+              <Route path="/title2" render={props => <PageSample title="title2" {...props} />} />
+            </Switch>
           </div>
         </MuiThemeProvider>
       </Router>
