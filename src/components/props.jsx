@@ -9,7 +9,7 @@ function Props(props) {
       <h2>My password is...</h2>
       <p>
         {props.password} :p<br />
-        This value is sent by App component.
+        This value was sent by App component.
       </p>
     </div>
   );
