@@ -42,13 +42,15 @@ class App extends Component {
     });
   }
 
-
   render() {
     const styles = {
       button: {
         marginLeft: '100px',
         backgroundColor: 'orange',
         color: 'white',
+      },
+      buttonText: {
+        textTransform: 'none',
       },
     };
 
@@ -73,7 +75,8 @@ class App extends Component {
             />
             <FlatButton
               style={styles.button}
-              label="onClick Sample button(Look console)"
+              labelStyle={styles.buttonText}
+              label="onClick Sample button"
               onClick={() => this.handleClick(this.state.email)}
             />
             <Switch>
