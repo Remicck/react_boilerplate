@@ -1,0 +1,15 @@
+//common
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+body {
+  width: auto;
+
+  .h1Class {
+    color: red,
+  }
+}
