@@ -1,6 +1,6 @@
 # react_boilerplate
 
-## 開発環境と使い方
+## 開発環境と使い方
 ### Mac
 - Node.js v8.9.4
 - yarn v0.24.5
