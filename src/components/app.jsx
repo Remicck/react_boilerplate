@@ -32,7 +32,7 @@ class App extends Component {
   // onClick処理の記述方法
   handleClick(mailAddress) {
     const passwordState = this.state.password;
-    console.log('click handling', mailAddress, passwordState);
+    alert(`click handling ${mailAddress} ${passwordState}`);
   }
 
   // textfieldからデータを受け取ってStateに渡す
