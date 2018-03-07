@@ -17,6 +17,7 @@ function LinkList() {
       <FlatButton label="Top" labelStyle={style}containerElement={<Link to="/" />} />
       <FlatButton label="タイトル1" labelStyle={style}containerElement={<Link to="/title1" />} />
       <FlatButton label="タイトル2" labelStyle={style}containerElement={<Link to="/title2" />} />
+      <FlatButton label="propsclass" labelStyle={style}containerElement={<Link to="/propsclass" />} />
     </div>
   );
 }

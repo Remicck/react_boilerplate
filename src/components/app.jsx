@@ -15,6 +15,7 @@ import {
 
 // components
 import Props from './props';// 独自Componentの呼び出し方法
+import PropsClass from './propsclass';// 独自Componentの呼び出し方法
 import PageSample from './pagesample';// 独自Componentの呼び出し方法
 import LinkList from './linklist';// 独自Componentの呼び出し方法
 
@@ -26,7 +27,9 @@ class App extends Component {
       name: 'Riki Kawai',
       email: 'hoge@example.com',
       password: 'hogehoge',
+      clicked: 'クリックされていません',
     };
+    this.handleChildClick = this.handleChildClick.bind(this);
   }
 
   // onClick処理の記述方法
@@ -41,6 +44,11 @@ class App extends Component {
     this.setState({
       name: e.target.value,
     });
+  }
+
+  // 子コンポーネントから渡ってきたClickイベント
+  handleChildClick() {
+    this.setState({ clicked: 'クリックされました！！！' });
   }
 
   render() {
@@ -67,6 +75,7 @@ class App extends Component {
             <h1 className="h1Class">
               Hello World, {this.state.name}
             </h1> {/* stateのデータを表示 */}
+            <p>{this.state.clicked}</p>
             <TextField
               hintText="Input your name!!"
               floatingLabelText="Name"
@@ -84,6 +93,7 @@ class App extends Component {
               <Route exact path="/" render={props => <Props password={this.state.password} {...props} />} />
               <Route path="/title1" render={props => <PageSample title="title1" {...props} />} />
               <Route path="/title2" render={props => <PageSample title="title2" {...props} />} />
+              <Route path="/propsclass" render={props => <PropsClass func={this.handleChildClick} {...props} />} />
             </Switch>
           </div>
         </MuiThemeProvider>
