@@ -32,6 +32,7 @@ class App extends Component {
   // onClick処理の記述方法
   handleClick(mailAddress) {
     const passwordState = this.state.password;
+    // eslint-disable-next-line no-alert
     alert(`click handling ${mailAddress} ${passwordState}`);
   }
 
