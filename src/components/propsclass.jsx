@@ -7,6 +7,9 @@ import FlatButton from 'material-ui/FlatButton';
 class PropsClass extends Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //   property: 'value',
+    // };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -27,8 +30,10 @@ class PropsClass extends Component {
           func={this.handleChildClick}
           {...props} />}
       />
+
         ↓ react-routerを通さない純粋なJAXの書き方の場合は以下
-      <PropsClass func={this.handleChildClick} />
+
+        <PropsClass func={this.handleChildClick} />
     */
   }
 
